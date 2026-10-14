@@ -1,3 +1,4 @@
+import { FOUNDERS } from '../data/founders'
 import { ZoomControl } from '../components/ZoomControl'
 import { useState } from 'react'
 import { useStore } from '../lib/store'
@@ -110,6 +111,28 @@ export function About() {
           <p className="mt-2">Stratus is a student prototype built for a university project. The cloud machines are simulated in your browser. No payments are taken and no data leaves your device.</p>
           <p className="mt-3">The apps inside are simulated look-alikes. They are not affiliated with any software vendor. In a real Stratus, vendors would partner with us to offer their official software.</p>
         </div>
+        <section className="pt-3">
+          <h2 className="text-lg font-bold text-white">About the founders</h2>
+          <p className="mt-1 text-sm text-ink-400">Four students building Stratus.</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {FOUNDERS.map((f) => (
+              <div key={f.name} className="card flex gap-4 p-4">
+                {f.photo ? (
+                  <img src={f.photo} alt={f.name} className="h-14 w-14 shrink-0 rounded-full object-cover" />
+                ) : (
+                  <div className={'flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-lg font-bold text-white ' + f.color} aria-hidden="true">
+                    {f.initials}
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <div className="font-semibold text-white">{f.name}</div>
+                  <div className="text-xs font-medium text-sky-300">{f.role}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-300">{f.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
         <p className="text-sm text-ink-400">Prices shown are example pricing. Every number in the demo comes from a fixed random seed (67), so it looks the same every time.</p>
       </div>
     </Shell>
