@@ -1,0 +1,28 @@
+{
+  "title": "Sample interview: students and old laptops",
+  "note": "Sample transcript written for the demo. Replace with your own interview material.",
+  "codes": [
+    { "id": "cost", "name": "Cost barrier", "color": "#F7C948" },
+    { "id": "workaround", "name": "Workaround", "color": "#4CC3FF" },
+    { "id": "frustration", "name": "Frustration", "color": "#FF5C7A" },
+    { "id": "access", "name": "Access to labs", "color": "#8E7CFF" },
+    { "id": "mobile", "name": "Uses phone", "color": "#22B573" }
+  ],
+  "turns": [
+    { "who": "Interviewer", "text": "Tell me about the computer you use for uni." },
+    { "who": "Student A", "text": "It's a six year old laptop my brother gave me. It works for essays. Anything bigger and it just freezes." },
+    { "who": "Interviewer", "text": "What happens when you need software like Blender or MATLAB?" },
+    { "who": "Student A", "text": "I go to the library labs, but they close at nine and there's always a queue. Honestly I mostly just don't do the optional exercises." },
+    { "who": "Student A", "text": "I say I'll book a lab slot every week. I usually forget until the night before." },
+    { "who": "Interviewer", "text": "Have you thought about buying a better laptop?" },
+    { "who": "Student A", "text": "A laptop that runs this stuff is like two thousand dollars. That's my rent for two months." },
+    { "who": "Student B", "text": "I've done a bit of coding on my phone when I'm on the train, which is kind of painful but it works." },
+    { "who": "Student B", "text": "I tell people I don't mind the old laptop. But I keep checking the price of new ones every week." },
+    { "who": "Student B", "text": "The spreadsheet for my business unit has fifty thousand rows and it crashed three times during the exam prep." }
+  ],
+  "observed": [
+    { "says": "I'll book a lab slot every week.", "does": "Booked 2 of 12 possible lab slots this term." },
+    { "says": "I don't mind the old laptop.", "does": "Checks laptop prices weekly, saved 4 listings." },
+    { "says": "It works for essays.", "does": "Skipped 3 optional software exercises." }
+  ]
+}
