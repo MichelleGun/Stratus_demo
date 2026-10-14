@@ -3,6 +3,7 @@ import { useStore, type Route } from '../lib/store'
 import { Logo } from './Logo'
 import { Icon } from './Icon'
 import { PLANS } from '../lib/catalog'
+import { ZoomButton, ZoomControl } from './ZoomControl'
 
 const TABS: { r: Route; label: string; icon: string }[] = [
   { r: 'home', label: 'Home', icon: 'home' },
@@ -55,7 +56,11 @@ export function Shell({ children, title, action }: { children: ReactNode; title?
             )
           })}
         </nav>
-        <div className="mt-auto card p-4">
+        <div className="mt-auto mb-3 px-2">
+          <div className="label mb-2">Display size</div>
+          <ZoomControl compact />
+        </div>
+        <div className="card p-4">
           <div className="label">Current plan</div>
           <div className="mt-1 font-semibold text-white">{PLANS[s.plan].name}</div>
           <div className="text-xs text-ink-400">{PLANS[s.plan].spec}</div>
@@ -67,7 +72,10 @@ export function Shell({ children, title, action }: { children: ReactNode; title?
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="safe-x safe-t-flow sticky top-0 z-20 flex items-center justify-between border-b border-white/5 bg-ink-900/85 backdrop-blur lg:hidden" style={{ minHeight: 56 }}>
           <Logo size={26} onTap={tap} />
-          {action}
+          <div className="flex items-center gap-2">
+            <ZoomButton />
+            {action}
+          </div>
         </header>
         <main className="scroll-y thin-scroll min-h-0 flex-1">
           <div className="safe-x mx-auto w-full max-w-5xl pb-28 pt-5 lg:pb-12 lg:pt-10">

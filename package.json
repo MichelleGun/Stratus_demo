@@ -1,6 +1,7 @@
 {
   "name": "stratus",
   "version": "1.0.0",
+  "homepage": "https://michellegun.github.io/Stratus_demo/",
   "description": "",
   "main": "index.js",
   "scripts": {

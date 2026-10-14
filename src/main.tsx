@@ -4,6 +4,9 @@ import { Component, type ReactNode } from 'react'
 import App from './App'
 import { StoreProvider } from './lib/store'
 import './index.css'
+import { initZoom } from './lib/zoom'
+
+initZoom()
 
 // Last line of defence: never leave a blank screen.
 class RootBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {

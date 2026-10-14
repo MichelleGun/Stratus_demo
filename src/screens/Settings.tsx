@@ -1,3 +1,4 @@
+import { ZoomControl } from '../components/ZoomControl'
 import { useState } from 'react'
 import { useStore } from '../lib/store'
 import { Shell } from '../components/Shell'
@@ -52,6 +53,9 @@ export function Settings() {
                 <option key={i.id} value={i.id}>{i.name}</option>
               ))}
             </select>
+          </Row>
+          <Row label="Display size" hint="Makes everything bigger or smaller. Tap the % to reset">
+            <ZoomControl />
           </Row>
           <Row label="Region" hint="Closest data centre gives the lowest delay">
             <Seg value={s.region} options={REGIONS.map((r) => ({ v: r, l: r }))} onChange={(v) => set({ region: v })} />

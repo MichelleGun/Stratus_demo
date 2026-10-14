@@ -1,3 +1,4 @@
+import { ZoomButton } from '../components/ZoomControl'
 import { Component, lazy, Suspense, type ReactNode, useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from 'react'
 import { useStore, firstName } from '../lib/store'
 import { appById, dockFor, PLANS, planAllows, REGION_LATENCY, type AppId, type PlanId } from '../lib/catalog'
@@ -443,6 +444,7 @@ export function Session() {
               )
             })}
           </div>
+          <ZoomButton up className="shrink-0" />
           <span className="tabnum shrink-0 px-2 text-xs font-medium text-white/80">{clock}</span>
         </div>
 
