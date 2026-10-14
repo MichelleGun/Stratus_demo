@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from 'react'
+import { Component, lazy, Suspense, type ReactNode, useCallback, useEffect, useMemo, useRef, useState, type ComponentType } from 'react'
 import { useStore, firstName } from '../lib/store'
 import { appById, dockFor, PLANS, planAllows, REGION_LATENCY, type AppId, type PlanId } from '../lib/catalog'
 import { AppIcon } from '../components/AppIcon'
@@ -53,6 +53,31 @@ function fmtTime(sec: number) {
   return (h ? h + ':' : '') + String(m).padStart(h ? 2 : 1, '0') + ':' + String(s).padStart(2, '0')
 }
 
+// Keeps one app's crash inside its own window so the session never goes blank.
+class AppBoundary extends Component<{ name: string; onClose: () => void; children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+  componentDidCatch(e: unknown) {
+    console.warn('App crashed', e)
+  }
+  render() {
+    if (!this.state.failed) return this.props.children
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-3 bg-[#1b1f2a] p-6 text-center text-sm text-ink-200">
+        <div className="font-semibold text-white">{this.props.name} needs a restart</div>
+        <button className="btn-ghost" onClick={() => this.setState({ failed: false })}>
+          Restart app
+        </button>
+        <button className="text-ink-400 underline" onClick={this.props.onClose}>
+          Close window
+        </button>
+      </div>
+    )
+  }
+}
+
 function Skeleton() {
   return (
     <div className="flex h-full flex-col gap-3 bg-[#1b1f2a] p-4">
@@ -79,6 +104,7 @@ export function Session() {
   const [hudOpen, setHudOpen] = useState(true)
   const [rotateHint, setRotateHint] = useState(() => !film)
   const [trackpad, setTrackpad] = useState(false)
+  const [pillOpen, setPillOpen] = useState(() => window.innerHeight > window.innerWidth)
   const [cursor, setCursor] = useState({ x: 200, y: 200 })
   const [ending, setEnding] = useState(false)
   const [lower, setLower] = useState<string | null>(null)
@@ -382,9 +408,11 @@ export function Session() {
                   </div>
                 </div>
                 <div className="relative min-h-0 flex-1">
-                  <Suspense fallback={<Skeleton />}>
-                    <Comp mobile={mobile} autoplay={req.montage || film?.startsWith('film-app') ? true : undefined} />
-                  </Suspense>
+                  <AppBoundary name={app.name} onClose={() => closeWin(w.id)}>
+                    <Suspense fallback={<Skeleton />}>
+                      <Comp mobile={mobile} autoplay={req.montage || film?.startsWith('film-app') ? true : undefined} />
+                    </Suspense>
+                  </AppBoundary>
                 </div>
                 {!max && (
                   <div
@@ -432,6 +460,11 @@ export function Session() {
       {mobile && !limitHit && !director.clean && (
         <div className="pointer-events-none absolute right-2 z-[700] flex justify-end" style={{ bottom: 'calc(56px + env(safe-area-inset-bottom,0px))' }}>
           <div className="pointer-events-auto flex flex-col gap-1 rounded-2xl bg-ink-900/90 p-1 shadow-2xl ring-1 ring-white/10 backdrop-blur">
+            <button onClick={() => setPillOpen(!pillOpen)} className="flex h-8 w-11 items-center justify-center rounded-xl text-ink-300 hover:bg-white/10" aria-label={pillOpen ? 'Hide controls' : 'Show controls'}>
+              <Icon name="chevron" size={16} className={pillOpen ? 'rotate-90' : '-rotate-90'} />
+            </button>
+            {pillOpen && (
+              <>
             <button onClick={showKeyboard} className="flex h-11 w-11 items-center justify-center rounded-xl text-white hover:bg-white/10" aria-label="Keyboard">
               <Icon name="keyboard" size={20} />
             </button>
@@ -444,6 +477,8 @@ export function Session() {
             <button onClick={() => setLowBw(!lowBw)} className={'flex h-11 w-11 items-center justify-center rounded-xl ' + (low ? 'bg-amber-400 text-ink-900' : 'text-white hover:bg-white/10')} aria-label="Quality">
               <Icon name="signal" size={20} />
             </button>
+              </>
+            )}
           </div>
         </div>
       )}

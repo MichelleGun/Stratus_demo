@@ -11,6 +11,15 @@ interface Obj {
   mesh: THREE.Object3D
 }
 
+function Panel({ title, children, className = '' }: { title: string; children: React.ReactNode; className?: string }) {
+  return (
+    <div className={'flex min-h-0 flex-col bg-[#262a33] ' + className}>
+      <div className="border-b border-black/30 px-2 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#9aa3b8]">{title}</div>
+      <div className="thin-scroll min-h-0 flex-1 overflow-auto">{children}</div>
+    </div>
+  )
+}
+
 export default function GameEngine({ autoplay, mobile }: AppProps) {
   const [playing, setPlaying] = useState(false)
   const [coins, setCoins] = useState(0)
@@ -293,12 +302,6 @@ export default function GameEngine({ autoplay, mobile }: AppProps) {
     input.current = { x: dx / 40, z: dy / 40 }
   }
 
-  const Panel = ({ title, children, className = '' }: { title: string; children: React.ReactNode; className?: string }) => (
-    <div className={'flex min-h-0 flex-col bg-[#262a33] ' + className}>
-      <div className="border-b border-black/30 px-2 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#9aa3b8]">{title}</div>
-      <div className="thin-scroll min-h-0 flex-1 overflow-auto">{children}</div>
-    </div>
-  )
   return (
     <div className="flex h-full flex-col bg-[#1c1f26] text-[12px] text-[#d6dbe7]">
       <div className="flex h-10 shrink-0 items-center gap-1 border-b border-black/40 bg-[#2b303b] px-2">

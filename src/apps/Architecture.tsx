@@ -42,7 +42,7 @@ export default function Architecture({ autoplay, mobile }: AppProps) {
     scene.add(new THREE.HemisphereLight(0xffffff, 0x8a9a7a, 1.0))
     const sunLight = new THREE.DirectionalLight(0xfff1d6, 2.6)
     sunLight.castShadow = true
-    sunLight.shadow.mapSize.set(2048, 2048)
+    sunLight.shadow.mapSize.set(1024, 1024)
     Object.assign(sunLight.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30, far: 120 })
     scene.add(sunLight)
     const clip = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 20)
@@ -132,10 +132,16 @@ export default function Architecture({ autoplay, mobile }: AppProps) {
     }
     placeSun(14)
     api.current = {
-      setLevel: (i, on) => (groups[i].visible = on),
-      setCut: (v) => (clip.constant = -W / 2 + v * (W + 2)),
+      setLevel: (i, on) => {
+        groups[i].visible = on
+      },
+      setCut: (v) => {
+        clip.constant = -W / 2 + v * (W + 2)
+      },
       setSun: placeSun,
-      setSpin: (v) => (state.spin = v),
+      setSpin: (v) => {
+        state.spin = v
+      },
     }
     controls.addEventListener('start', () => (state.spin = false))
     return {
@@ -151,9 +157,15 @@ export default function Architecture({ autoplay, mobile }: AppProps) {
     }
   })
 
-  useEffect(() => api.current?.setCut(cut), [cut])
-  useEffect(() => api.current?.setSun(sun), [sun])
-  useEffect(() => levels.forEach((on, i) => api.current?.setLevel(i, on)), [levels])
+  useEffect(() => {
+    api.current?.setCut(cut)
+  }, [cut])
+  useEffect(() => {
+    api.current?.setSun(sun)
+  }, [sun])
+  useEffect(() => {
+    levels.forEach((on, i) => api.current?.setLevel(i, on))
+  }, [levels])
   useEffect(() => {
     if (!autoplay) return
     let s = 9
