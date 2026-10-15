@@ -1,10 +1,10 @@
-// About the founders. Placeholders only: swap in real names, roles and bios
-// once each teammate has agreed. Set `photo` to an image URL to replace the
-// initials avatar.
+// About the founders, shown on the About Stratus page.
+// Set `photo` to an image URL to replace the initials avatar.
 export interface Founder {
   name: string
-  role: string
-  bio: string
+  degree: string
+  contributions: string
+  quote: string
   initials: string
   color: string
   photo?: string
@@ -12,31 +12,35 @@ export interface Founder {
 
 export const FOUNDERS: Founder[] = [
   {
-    name: 'Founder One',
-    role: 'Role placeholder, e.g. Product and pitch',
-    bio: 'Short bio placeholder. Degree and year at UTS, what they bring to Stratus, and one line on why this problem matters to them.',
-    initials: 'F1',
+    name: 'Adrian Martin',
+    degree: 'Bachelor of Science',
+    contributions: 'Investigation, Writing - Review & Edit, Resources',
+    quote: "It's so cool to get to try what applications other industries use",
+    initials: 'AM',
     color: 'from-sky-400 to-blue-600',
   },
   {
-    name: 'Founder Two',
-    role: 'Role placeholder, e.g. Engineering',
-    bio: 'Short bio placeholder. Degree and year at UTS, what they bring to Stratus, and one line on why this problem matters to them.',
-    initials: 'F2',
+    name: 'Michael Frederick',
+    degree: 'Bachelor of IT',
+    contributions: 'Methodology, Writing - Review & Edit, Resources',
+    quote: 'Laptop, welcome back',
+    initials: 'MF',
     color: 'from-violet-400 to-purple-600',
   },
   {
-    name: 'Founder Three',
-    role: 'Role placeholder, e.g. Design and research',
-    bio: 'Short bio placeholder. Degree and year at UTS, what they bring to Stratus, and one line on why this problem matters to them.',
-    initials: 'F3',
+    name: 'Michelle Gunawan',
+    degree: 'Bachelor of AI',
+    contributions: 'Project Administration & Data Curation, Software, Direction, Writing - Review & Edit',
+    quote: 'Finally, GPUs from my phone!!',
+    initials: 'MG',
     color: 'from-emerald-400 to-teal-600',
   },
   {
-    name: 'Founder Four',
-    role: 'Role placeholder, e.g. Business and finance',
-    bio: 'Short bio placeholder. Degree and year at UTS, what they bring to Stratus, and one line on why this problem matters to them.',
-    initials: 'F4',
+    name: 'Reuben Schweitzer',
+    degree: 'Bachelor of IT',
+    contributions: 'Conceptualisation, Visualisation, Direction, Writing - Original Draft, Resources',
+    quote: "Why didn't this happen sooner? Cloud computing should be for everyone",
+    initials: 'RS',
     color: 'from-amber-400 to-orange-600',
   },
 ]

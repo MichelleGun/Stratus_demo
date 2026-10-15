@@ -126,8 +126,9 @@ export function About() {
                 )}
                 <div className="min-w-0">
                   <div className="font-semibold text-white">{f.name}</div>
-                  <div className="text-xs font-medium text-sky-300">{f.role}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-300">{f.bio}</p>
+                  <div className="text-xs font-medium text-sky-300">{f.degree}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-300">{f.contributions}</p>
+                  <p className="mt-2 text-sm italic leading-relaxed text-white/90">"{f.quote}"</p>
                 </div>
               </div>
             ))}
