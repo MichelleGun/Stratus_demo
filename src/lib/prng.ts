@@ -1,4 +1,4 @@
-// Seeded PRNG (mulberry32). Seed 67 keeps every demo run identical for filming.
+// Seeded PRNG (mulberry32). Seed 67 keeps every demo run identical.
 export const SEED = 67
 
 export function mulberry32(seed: number) {

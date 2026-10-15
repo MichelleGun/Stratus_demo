@@ -58,7 +58,7 @@ export function Director() {
           </div>
         </div>
         <div>
-          <div className="mb-1 text-[10px] font-bold uppercase tracking-widest text-white/50">Scenes</div>
+          <div className="mb-1 text-[10px] font-bold uppercase tracking-widest text-white/50">Shortcuts</div>
           <div className="flex flex-wrap gap-1">
             <B onClick={() => (inSession ? setDirector({ limitNow: director.limitNow + 1 }) : startLaunch({ apps: ['spreadsheet'], plan: s.plan, quick: true }))}>Trigger limit reached</B>
             <B

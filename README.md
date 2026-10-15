@@ -29,11 +29,11 @@ Replace the sample interview in `src/data/transcript.json` with your own materia
 
 `npm run build` makes one self-contained `dist/index.html` you can host anywhere. `python3 make-artifact.py out.html` turns it into the Claude Artifact page.
 
-## Filming guide
+## Deep links
 
-Add these to the end of the link.
+Add these to the end of the link to jump straight to a screen. The `film-` prefix is only a naming convention, so it is kept to avoid breaking saved links.
 
-| Link ending | Shot |
+| Link ending | Opens |
 |---|---|
 | `#film-splash` | Logo and tagline on dark, for the phone held up at the end |
 | `#film-icon` | Grey desktop with one glowing Stratus icon. Tap it to launch into the spreadsheet |
