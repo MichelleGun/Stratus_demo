@@ -7,6 +7,7 @@ import { More, HourBank, Teams } from './screens/Community'
 import { Settings, About } from './screens/Settings'
 import { Launch } from './screens/Launch'
 import { Session } from './screens/Session'
+import { Ideation } from './screens/Ideation'
 import { FilmIcon } from './screens/FilmIcon'
 import { Director } from './components/Director'
 import { Toasts } from './components/Shell'
@@ -32,6 +33,7 @@ export default function App() {
       case 'about': screen = <About />; break
       case 'launch': screen = <Launch />; break
       case 'session': screen = <Session />; break
+      case 'ideation': screen = <Ideation />; break
       case 'film-icon': screen = <FilmIcon />; break
       default: screen = <Home />
     }

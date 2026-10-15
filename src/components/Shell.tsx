@@ -19,8 +19,9 @@ const SIDE: { r: Route; label: string; icon: string }[] = [
   { r: 'teams', label: 'Teams', icon: 'users' },
   { r: 'settings', label: 'Settings', icon: 'settings' },
   { r: 'about', label: 'About', icon: 'info' },
+  { r: 'ideation', label: 'Behind the ideation', icon: 'sparkle' },
 ]
-const MORE_ROUTES: Route[] = ['more', 'hourbank', 'teams', 'settings', 'about']
+const MORE_ROUTES: Route[] = ['more', 'hourbank', 'teams', 'settings', 'about', 'ideation']
 
 export function useLogoTaps() {
   const { setDirector, director } = useStore()

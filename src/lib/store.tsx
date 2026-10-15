@@ -6,7 +6,7 @@ import { ding } from './sound'
 
 export type Route =
   | 'splash' | 'signin' | 'onboarding' | 'home' | 'library' | 'plans' | 'limit' | 'more'
-  | 'hourbank' | 'teams' | 'settings' | 'about' | 'launch' | 'session' | 'film-icon'
+  | 'hourbank' | 'teams' | 'settings' | 'about' | 'launch' | 'session' | 'film-icon' | 'ideation'
 
 export interface SavedSession {
   apps: AppId[]
@@ -92,7 +92,7 @@ interface Ctx {
 const StoreCtx = createContext<Ctx | null>(null)
 const KEY = 'stratus.v1.state'
 
-const ROUTES: Route[] = ['splash', 'signin', 'onboarding', 'home', 'library', 'plans', 'limit', 'more', 'hourbank', 'teams', 'settings', 'about', 'launch', 'session', 'film-icon']
+const ROUTES: Route[] = ['splash', 'signin', 'onboarding', 'home', 'library', 'plans', 'limit', 'more', 'hourbank', 'teams', 'settings', 'about', 'launch', 'session', 'film-icon', 'ideation']
 
 function readHash(): string {
   return (window.location.hash || '').replace(/^#\/?/, '').replace(/\//g, '-')

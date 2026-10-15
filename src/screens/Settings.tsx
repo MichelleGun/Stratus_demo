@@ -3,6 +3,7 @@ import { ZoomControl } from '../components/ZoomControl'
 import { useState } from 'react'
 import { useStore } from '../lib/store'
 import { Shell } from '../components/Shell'
+import { Icon } from '../components/Icon'
 import { INDUSTRIES, PLAN_ORDER, PLANS, REGIONS, APPS, industryById } from '../lib/catalog'
 import { DEMO_FILES } from './Home'
 
@@ -101,6 +102,7 @@ export function Settings() {
 }
 
 export function About() {
+  const { go } = useStore()
   return (
     <Shell title="About Stratus">
       <div className="max-w-2xl space-y-5 text-ink-200">
@@ -111,6 +113,16 @@ export function About() {
           <p className="mt-2">Stratus is a student prototype built for a university project. The cloud machines are simulated in your browser. No payments are taken and no data leaves your device.</p>
           <p className="mt-3">The apps inside are simulated look-alikes. They are not affiliated with any software vendor. In a real Stratus, vendors would partner with us to offer their official software.</p>
         </div>
+        <button onClick={() => go('ideation')} className="card flex w-full items-center gap-4 p-5 text-left ring-1 ring-sky-400/30 hover:bg-white/[.03]">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-400/15 text-sky-300">
+            <Icon name="sparkle" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-white">Behind the ideation</span>
+            <span className="block text-sm text-ink-400">Six methods that shaped Stratus, with sources</span>
+          </span>
+          <Icon name="chevron" className="text-ink-400" />
+        </button>
         <section className="pt-3">
           <h2 className="text-lg font-bold text-white">About the founders</h2>
           <p className="mt-1 text-sm text-ink-400">Four students building Stratus.</p>

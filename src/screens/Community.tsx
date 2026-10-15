@@ -13,6 +13,7 @@ export function More() {
     { r: 'teams' as const, t: 'Teams', d: 'Set up a whole class in one go', icon: 'users' },
     { r: 'settings' as const, t: 'Settings', d: 'Region, defaults, sound, reset', icon: 'settings' },
     { r: 'about' as const, t: 'About Stratus', d: 'What is real and what is simulated', icon: 'info' },
+    { r: 'ideation' as const, t: 'Behind the ideation', d: 'The research that shaped Stratus', icon: 'sparkle' },
   ]
   return (
     <Shell title="More">
